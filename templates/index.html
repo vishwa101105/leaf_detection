@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaf Disease Detection</title>
+</head>
+
+<body style="font-family:Arial; text-align:center; background:#e8f5e9;">
+
+<div style="
+    margin-top:50px;
+    padding:20px;
+    background:white;
+    display:inline-block;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+">
+
+    <h1>🌿 Leaf Disease Detection</h1>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+        <!-- ONE INPUT -->
+        <input type="file" name="file" id="fileInput" accept="image/*" required style="display:none;">
+
+        <!-- Buttons -->
+        <button type="button" onclick="openCamera()" style="
+            padding:10px 20px;
+            margin:10px;
+            background:green;
+            color:white;
+            border:none;
+            border-radius:5px;
+        ">📷 Capture</button>
+
+        <button type="button" onclick="openFile()" style="
+            padding:10px 20px;
+            margin:10px;
+            background:blue;
+            color:white;
+            border:none;
+            border-radius:5px;
+        ">📁 Choose File</button>
+
+        <br>
+
+        <!-- File Name -->
+        <p id="fileName" style="margin-top:10px; font-weight:bold;">
+            No file selected
+        </p>
+
+        <!-- Image Preview -->
+        <div style="margin-top:15px; display:flex; justify-content:center;">
+            <img id="preview"
+                 style="
+                    width:100%;
+                    max-width:280px;
+                    height:auto;
+                    object-fit:contain;
+                    border-radius:10px;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+                    display:none;
+                 ">
+        </div>
+
+        <br>
+
+        <!-- Submit -->
+        <button type="submit" style="
+            padding:10px 25px;
+            background:darkgreen;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:16px;
+        ">
+            Predict Disease
+        </button>
+
+    </form>
+</div>
+
+<script>
+// Open Camera
+function openCamera() {
+    let input = document.getElementById("fileInput");
+    input.setAttribute("capture", "environment");
+    input.click();
+}
+
+// Open File Picker
+function openFile() {
+    let input = document.getElementById("fileInput");
+    input.removeAttribute("capture");
+    input.click();
+}
+
+// Show Preview + File Name
+document.getElementById("fileInput").addEventListener("change", function(event) {
+
+    let file = event.target.files[0];
+
+    if (file) {
+        // Show file name
+        document.getElementById("fileName").innerText = file.name;
+
+        // Show image preview
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            let img = document.getElementById("preview");
+            img.src = e.target.result;
+            img.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+
+</body>
+</html>

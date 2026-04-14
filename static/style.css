@@ -1,0 +1,60 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #00c9a7, #92fe9d);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 420px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.prediction {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.confidence {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.bar {
+    background: #ddd;
+    border-radius: 8px;
+    margin: 6px 0;
+}
+
+.fill {
+    height: 10px;
+    background: #4caf50;
+    border-radius: 8px;
+}
+a {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: white;
+    background: #00c9a7;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+</style>

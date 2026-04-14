@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #56ab2f, #a8e063);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f2f2f2;
+            margin: 5px;
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            background: #56ab2f;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+
+        a:hover {
+            background: #3d8b1f;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Prediction Result</h1>
+
+    <!-- IMAGE (safe handling) -->
+    {% if img_path %}
+        <img src="{{ url_for('static', filename=img_path) }}">
+    {% endif %}
+
+    <h2>🌿 {{ prediction }}</h2>
+
+    <h3>All Probabilities:</h3>
+    <ul>
+        {% for key, value in probabilities.items() %}
+            <li>{{ key }} : {{ value }}%</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">Upload Another Image</a>
+
+</div>
+
+</body>
+</html>
